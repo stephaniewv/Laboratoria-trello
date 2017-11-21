@@ -83,6 +83,11 @@ function createTask(event) {
   
   parentButton.classList.toggle('display-none');  
   parentButton.parentElement.appendChild(div);
+
+  div.parentElement.appendChild(parentButton.previousElementSibling);
+
+  // muestra el link, para desplegar el formulario
+  parentButton.parentElement.lastElementChild.classList.toggle('display-none');
 }
 
 function begin() {
