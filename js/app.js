@@ -31,6 +31,16 @@ function createList(event) {
 
     link.addEventListener("click", newTask);
     titleElement.parentElement.appendChild(link);
+
+    var containerRight = document.createElement('div');
+    containerRight.classList.add('container-form');
+    form.parentElement.parentElement.appendChild(containerRight);
+    containerRight.appendChild(addList);
+    addList.classList.toggle('display-none');
+
+    containerRight.insertBefore(form, containerRight.firstElementChild);
+
+    listName.value = '';
   }
 }
 
