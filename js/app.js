@@ -26,7 +26,7 @@ function createList(event) {
     var link = document.createElement("a");
     link.setAttribute("href", "#");
 
-    var linkText = document.createTextNode("Añadir una tarjeta...");
+    var linkText = document.createTextNode("Añadir una tarea...");
     link.appendChild(linkText);
 
     /* link.addEventListener("click", createCard); */
