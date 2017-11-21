@@ -29,9 +29,33 @@ function createList(event) {
     var linkText = document.createTextNode("Añadir una tarea...");
     link.appendChild(linkText);
 
-    /* link.addEventListener("click", createCard); */
+    link.addEventListener("click", newTask);
     titleElement.parentElement.appendChild(link);
   }
+}
+
+function newTask(event) {
+  event.preventDefault();
+
+  // oculta el link
+  event.target.classList.toggle('display-none');
+
+  var subForm = document.createElement('form');
+  event.target.parentElement.appendChild(subForm);
+
+  var nameTask = document.createElement('textarea');
+  nameTask.classList.add('name-list');
+  subForm.appendChild(nameTask);
+
+  var taskBtn = document.createElement('button');
+  taskBtn.setAttribute('type', 'submit');
+  taskBtn.textContent = 'Añadir';
+  taskBtn.classList.add('button-id');
+  taskBtn.disabled = true;
+
+  subForm.appendChild(taskBtn);
+
+  nameTask.focus();
 }
 
 function begin() {

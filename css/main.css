@@ -37,7 +37,7 @@ header {
   background-color: #E2E4E6;  
 }
 
-#name-list {
+.name-list {
   font-family: 'Lobster Two', cursive;
   padding: 10px;
   display: block;
@@ -60,7 +60,7 @@ header {
   display: none;
 }
 
-#button-id {
+.button-id {
   border: 0;
   padding: 5px;
   background-color: #5EB64B;
