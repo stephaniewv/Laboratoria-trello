@@ -2,7 +2,7 @@ window.addEventListener('load', begin);
 
 var addList = document.getElementById('addList');
 var form = document.getElementById('form');
-var nameList = document.getElementById('name-list');
+var listName = document.getElementById('name-list');
 var button = document.getElementById('button-id');
 
 function newList(event) {
@@ -13,10 +13,10 @@ function newList(event) {
 function createList(event) {
   event.preventDefault();
 
-  if(nameList.value) {
+  if(listName.value) {
     form.classList.toggle('display-none');
 
-    var title = nameList.value.toUpperCase();
+    var title = listName.value.toUpperCase();
     var titleElement = document.createElement('div');
 
     titleElement.textContent = title;
@@ -43,9 +43,9 @@ function newTask(event) {
   var subForm = document.createElement('form');
   event.target.parentElement.appendChild(subForm);
 
-  var nameTask = document.createElement('textarea');
-  nameTask.classList.add('name-list');
-  subForm.appendChild(nameTask);
+  var taskName = document.createElement('textarea');
+  taskName.classList.add('name-list');
+  subForm.appendChild(taskName);
 
   var taskBtn = document.createElement('button');
   taskBtn.setAttribute('type', 'submit');
@@ -53,9 +53,36 @@ function newTask(event) {
   taskBtn.classList.add('button-id');
   taskBtn.disabled = true;
 
+  taskName.addEventListener('keyup', enableButton);
+
   subForm.appendChild(taskBtn);
 
-  nameTask.focus();
+  taskName.focus();
+
+  taskBtn.addEventListener('click', createTask);
+}
+
+function enableButton(event) {
+  var text = event.target.value.trim();
+
+  if(text.legth)
+    event.target.nextElementSibling.disabled = true;
+  else
+  event.target.nextElementSibling.disabled = false;
+}
+
+function createTask(event) {
+  event.preventDefault();
+
+  var textDiv = event.target.previousSibling.value.trim();
+  var div = document.createElement('div');
+
+  div.textContent = textDiv;
+
+  var parentButton = event.target.parentElement;
+  
+  parentButton.classList.toggle('display-none');  
+  parentButton.parentElement.appendChild(div);
 }
 
 function begin() {
